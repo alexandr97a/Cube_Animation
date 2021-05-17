@@ -1,0 +1,121 @@
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+	background: radial-gradient(#333,#080808 );
+}
+.infinite{
+	position: relative;
+	width: 700px;
+	height: 160px;
+	background: #525252;
+	transform-origin: bottom; 
+	transform-style: preserve-3d;
+	transform: perspective(500px) rotateX(30deg)
+}
+.infinite::before{
+	content:  ' ';
+	position: absolute;
+	top: 50%;
+	left: 0;
+	transform: translateY(-50%);
+	width: 100%;
+	height: 10px;
+	background: linear-gradient(90deg, #fbff0e 0%, #fbff0e 70%,#525252 70%, #525252 100% );
+	box-shadow: 0 0 5px#fbff0e;
+	background-size:90px;
+	animation: animateRoad 1s linear infinite;
+}
+@keyframes animateRoad{
+	0%{
+		background-position: 0;
+	}
+	100%{
+		background-position: -90px;
+	}
+}
+.infinite::after{
+	content:  ' ';
+	position: absolute;
+	width: 100%;
+	height: 30px;
+	background: #333;
+	bottom: -30px;
+	transform-origin:top;
+	transform: perspective(500px) rotateX(-25deg);
+}
+.shadow{
+	position: absolute;
+	left: 50%;
+	bottom: -93px;
+	width: 95%;
+	transform: translateX(-50%);
+	height: 60px;
+	background: linear-gradient(rgba(0,0,0,0.25), transparent);
+}
+.box{
+	display: flex;
+	position: absolute;
+	width: 100%;
+	justify-content: center;
+	align-items: center;
+	-webkit-box-reflect: below 1px linear-gradient(transparent,transparent,transparent,#0004 );
+	animation: animateBox 1s linear infinite;
+}
+@keyframes animateBox{
+	0%{
+		transform: translateX(0) ;
+	}
+	100%{
+		transform: translateX(-100px);
+	}
+}
+.square{
+	position: relative;
+	width: 100px;
+	height: 100px;
+	background: #ff005b;
+	box-shadow:  0 0 20px #ff005b;
+	transform-origin: bottom right; 
+	animation: animate 1s linear infinite;
+}
+@keyframes animate {
+	0%{
+		transform:rotate(0deg);
+	}
+	100%{
+		transform:rotate(90deg);
+	}
+}
+.neon_box{
+	position: absolute;
+	top:110px;
+}
+.neon{
+	padding: 0 20px;
+	color: #fff;
+	font-size: 5rem;
+	text-shadow: 0 0 15px #ff0056;
+}
+.neon::after{
+	content: attr(data-text);
+	position: absolute;
+	top: 0;
+	left: 0px;
+	z-index: -1;
+	padding: 0 20px;
+	color: #ff0056;
+	filter: blur(15px);
+}
+
+.neon::before{
+	content: ' ';
+	position: absolute;
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	background: #fe3a80 ;
+	opacity: .5; 
+	filter: blur(80px);
+}
